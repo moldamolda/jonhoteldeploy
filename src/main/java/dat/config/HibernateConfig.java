@@ -92,14 +92,14 @@ public class HibernateConfig {
     private static Properties setDeployedProperties(Properties props) {
         String DBName = ("hotel");
         props.setProperty("hibernate.connection.url", System.getenv("CONNECTION_STR") + DBName);
-        props.setProperty("hibernate.connection.username", System.getenv("postgres"));
+        props.setProperty("hibernate.connection.username", System.getenv("DB_USERNAME"));
         props.setProperty("hibernate.connection.password", System.getenv("DB_PASSWORD"));
         return props;
     }
 
     private static Properties setDevProperties(Properties props) {
         String DBName = Utils.getPropertyValue("DB_NAME", "config.properties");
-        props.put("hibernate.connection.url", "jdbc:postgresql://db:5432/" + DBName);
+        props.put("hibernate.connection.url", "jdbc:postgresql://localhost:5432/" + DBName);
         props.put("hibernate.connection.username", "postgres");
         props.put("hibernate.connection.password", "DB_PASSWORD");
         return props;
